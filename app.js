@@ -6,8 +6,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const routes = require("./routes/router");
 const local = "http://localhost:3000";
 const remote = "https://jason-et-les-argonautes.netlify.app/";
 var app = express();
@@ -27,9 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/api", indexRouter);
-app.use("/users", usersRouter);
+app.use("/api", routes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
