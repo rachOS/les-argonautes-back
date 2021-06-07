@@ -13,6 +13,7 @@ const backURL = "https://les-argonautes-back.herokuapp.com/";
 var app = express();
 app.use(
   cors({
+    origin: [local, frontURL, backURL],
     credentials: true,
   })
 );
