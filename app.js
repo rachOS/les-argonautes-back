@@ -1,15 +1,15 @@
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
+const dotenv = require("dotenv");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
-const dotenv = require("dotenv");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-const local = process.env.LOCALHOST;
-const remote = process.env.REMOTEHOST;
+const local = "http://localhost:3000";
+const remote = "https://front-bonapp.herokuapp.com";
 var app = express();
 app.use(
   cors({
