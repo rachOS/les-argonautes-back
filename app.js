@@ -14,9 +14,7 @@ var app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ["*"],
-    allowedHeaders: ["*"],
-    allowedOrigins: ["*"],
+    origin: "*",
   })
 );
 // view engine setup
