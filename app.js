@@ -15,6 +15,8 @@ app.use(
   cors({
     credentials: true,
     origin: [local, frontURL, backURL, "*"],
+    allowedHeaders: ["*"],
+    allowedOrigins: ["*"],
   })
 );
 // view engine setup
