@@ -9,7 +9,6 @@ router.get("/", (req, res, next) => {
       if (error) {
         return res.status(500).json(error);
       }
-      res.send("header", "Access-Control-Allow-Origin: *");
       return res.status(200).json(result);
     });
   } catch (error) {
