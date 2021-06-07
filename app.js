@@ -9,7 +9,7 @@ const cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const local = "http://localhost:3000";
-const remote = "https://jason-et-les-argonautes.netlify.app/";
+const remote = "https://jason-et-les-argonautes.netlify.app";
 var app = express();
 app.use(
   cors({
