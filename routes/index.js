@@ -8,7 +8,6 @@ router.get("/", function (req, res, next) {
 /* GET home page. */
 router.get("/api", function (req, res, next) {
   res.status(200).json({ title: "REACT" });
-  next();
 });
 
 module.exports = router;
