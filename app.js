@@ -2,6 +2,7 @@ var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 const dotenv = require("dotenv");
+const helmet = require("helmet");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
@@ -11,6 +12,7 @@ const local = "http://localhost:3000";
 const frontURL = "https://jason-et-les-argonautes.netlify.app/";
 const backURL = "https://les-argonautes-back.herokuapp.com/";
 var app = express();
+app.use(helmet());
 app.use(
   cors({
     origin: [local, frontURL, backURL],
