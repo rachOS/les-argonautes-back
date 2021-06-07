@@ -14,7 +14,7 @@ var app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [local, frontURL, backURL, "*"],
+    origin: ["*"],
     allowedHeaders: ["*"],
     allowedOrigins: ["*"],
   })
