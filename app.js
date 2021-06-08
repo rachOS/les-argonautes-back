@@ -13,6 +13,13 @@ const frontURL = "https://jason-et-les-argonautes.netlify.app";
 const backURL = "https://les-argonautes-back.herokuapp.com";
 var app = express();
 app.use(helmet());
+const membersOptions = {
+  origin: [true, "https://les-argonautes-front.herokuapp.com/"],
+  methods: ["POST", "GET"],
+  credentials: true,
+  maxAge: 3600,
+};
+app.options("/api", cors(membersOptions));
 /* app.use(
   cors({
     origin: [local, frontURL, backURL],
