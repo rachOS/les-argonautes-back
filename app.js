@@ -17,7 +17,7 @@ const whiteList = [
 var app = express();
 app.use(helmet());
 const membersOptions = {
-  origin: whiteList,
+  origin: true,
   methods: ["POST", "GET"],
   credentials: true,
   maxAge: 3600,
