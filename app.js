@@ -20,12 +20,7 @@ const membersOptions = {
   maxAge: 3600,
 };
 app.options("/api", cors(membersOptions));
-/* app.use(
-  cors({
-    origin: [local, frontURL, backURL],
-    credentials: true,
-  })
-);
+app.use(cors(membersOptions));
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -33,7 +28,7 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-}); */
+});
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
