@@ -25,14 +25,11 @@ const membersOptions = {
   optionsSuccessStatus: 204,
 };
 app.use(cors(membersOptions));
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api", routes);
 
@@ -51,5 +48,16 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+// conditional test for Heroku PORT
+const port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8000;
+}
 
+app.listen(port, (err) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(`app listen on port ${port}`);
+});
 module.exports = app;
