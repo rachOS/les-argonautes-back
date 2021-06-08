@@ -10,7 +10,6 @@ const cors = require("cors");
 const routes = require("./routes/router");
 const local = "http://localhost:3000";
 const whiteList = [
-  true,
   "https://les-argonautes-front.herokuapp.com",
   "https://jason-et-les-argonautes.netlify.app",
   "https://les-argonautes-back.herokuapp.com",
