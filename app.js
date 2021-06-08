@@ -9,12 +9,16 @@ const cors = require("cors");
 
 const routes = require("./routes/router");
 const local = "http://localhost:3000";
-const frontURL = "https://jason-et-les-argonautes.netlify.app";
-const backURL = "https://les-argonautes-back.herokuapp.com";
+const whiteList = [
+  true,
+  "https://les-argonautes-front.herokuapp.com",
+  "https://jason-et-les-argonautes.netlify.app",
+  "https://les-argonautes-back.herokuapp.com",
+];
 var app = express();
 app.use(helmet());
 const membersOptions = {
-  origin: [true, "https://les-argonautes-front.herokuapp.com/"],
+  origin: whiteList,
   methods: ["POST", "GET"],
   credentials: true,
   maxAge: 3600,
