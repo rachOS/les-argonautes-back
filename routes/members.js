@@ -9,7 +9,7 @@ const membersOptions = {
   credentials: true,
   maxAge: 3600,
 };
-router.options("/issue-2", cors(membersOptions));
+router.options("/", cors(membersOptions));
 
 router.get("/", cors(membersOptions), (req, res, next) => {
   try {
