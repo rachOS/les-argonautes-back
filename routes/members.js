@@ -3,15 +3,7 @@ var cors = require("cors");
 var express = require("express");
 var router = express.Router();
 
-const membersOptions = {
-  origin: [true, "https://les-argonautes-front.herokuapp.com/"],
-  methods: ["POST", "GET"],
-  credentials: true,
-  maxAge: 3600,
-};
-router.options("/", cors(membersOptions));
-
-router.get("/", cors(membersOptions), (req, res, next) => {
+router.get("/", cors(), (req, res, next) => {
   const query = "SELECT * FROM member as m";
   connection.query(query, (error, result) => {
     if (error) {
