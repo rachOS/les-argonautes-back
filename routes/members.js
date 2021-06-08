@@ -3,7 +3,15 @@ var cors = require("cors");
 var express = require("express");
 var router = express.Router();
 
-router.get("/", cors(), (req, res, next) => {
+const membersOptions = {
+  origin: true,
+  methods: ["POST", "GET"],
+  credentials: true,
+  maxAge: 3600,
+};
+router.options("/issue-2", cors(membersOptions));
+
+router.get("/", cors(membersOptions), (req, res, next) => {
   try {
     const query = "SELECT * FROM member as m";
     connection.query(query, (error, result) => {
@@ -15,6 +23,7 @@ router.get("/", cors(), (req, res, next) => {
   } catch (error) {
     throw new Error(error);
   }
+  next();
 });
 
 /* router.post("/", (req, res, next) => {
