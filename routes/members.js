@@ -12,7 +12,14 @@ const membersOptions = {
 router.options("/", cors(membersOptions));
 
 router.get("/", cors(membersOptions), (req, res, next) => {
-  try {
+  const query = "SELECT * FROM member as m";
+  connection.query(query, (error, result) => {
+    if (error) {
+      return res.status(500).json(error);
+    }
+    return res.status(200).json(result);
+  });
+  /* try {
     const query = "SELECT * FROM member as m";
     connection.query(query, (error, result) => {
       if (error) {
@@ -23,7 +30,7 @@ router.get("/", cors(membersOptions), (req, res, next) => {
   } catch (error) {
     throw new Error(error);
   }
-  next();
+  next(); */
 });
 
 /* router.post("/", (req, res, next) => {
