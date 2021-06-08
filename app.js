@@ -13,7 +13,7 @@ const frontURL = "https://jason-et-les-argonautes.netlify.app";
 const backURL = "https://les-argonautes-back.herokuapp.com";
 var app = express();
 app.use(helmet());
-app.use(
+/* app.use(
   cors({
     origin: [local, frontURL, backURL],
     credentials: true,
@@ -26,7 +26,7 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
-});
+}); */
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
