@@ -1,9 +1,8 @@
 const connection = require("../config");
-var cors = require("cors");
 var express = require("express");
 var router = express.Router();
 
-router.get("/", cors(), (req, res, next) => {
+router.get("/", (req, res, next) => {
   const query = "SELECT * FROM member as m";
   connection.query(query, (error, result) => {
     if (error) {

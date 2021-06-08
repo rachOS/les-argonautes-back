@@ -8,8 +8,8 @@ var logger = require("morgan");
 const cors = require("cors");
 
 const routes = require("./routes/router");
-const local = "http://localhost:3000";
 const whiteList = [
+  "http://localhost:3000",
   "https://les-argonautes-front.herokuapp.com",
   "https://jason-et-les-argonautes.netlify.app",
   "https://les-argonautes-back.herokuapp.com",
@@ -26,7 +26,6 @@ app.use(cors(membersOptions));
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
-app.set("header", "Access-Control-Allow-Origin: *");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
