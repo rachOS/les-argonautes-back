@@ -4,7 +4,7 @@ var express = require("express");
 var router = express.Router();
 
 const membersOptions = {
-  origin: true,
+  origin: [true, "https://les-argonautes-front.herokuapp.com/"],
   methods: ["POST", "GET"],
   credentials: true,
   maxAge: 3600,
