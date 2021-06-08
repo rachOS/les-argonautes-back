@@ -21,6 +21,8 @@ const membersOptions = {
   methods: ["POST", "GET"],
   credentials: true,
   maxAge: 3600,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 app.use(cors(membersOptions));
 // view engine setup
