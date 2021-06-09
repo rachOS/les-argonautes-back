@@ -2,42 +2,33 @@ const connection = require("../config");
 var express = require("express");
 var router = express.Router();
 
-router.get("/", (req, res, next) => {
-  const query = "SELECT * FROM member as m";
-  connection.query(query, (error, result) => {
-    if (error) {
-      return res.status(500).json(error);
-    }
-    res.header("Acces-Control-Allow-Origin", "*");
-    return res.status(200).json(result);
-  });
-  /* try {
-    const query = "SELECT * FROM member as m";
-    connection.query(query, (error, result) => {
-      if (error) {
-        return res.status(500).json(error);
-      }
-      return res.status(200).json(result);
+router.get("/", async (req, res, next) => {
+  try {
+    const query = await "SELECT * FROM member AS m";
+    await connection.query(query, (error, result) => {
+      return error
+        ? res.status(500).json({ error })
+        : res.status(200).json(result);
     });
   } catch (error) {
     throw new Error(error);
   }
-  next(); */
+  await next();
 });
 
-/* router.post("/", (req, res, next) => {
-  const query = ""
-  const data = req.body
-  connection.query(sql, data, (error, result) => {});
-  res
-    .status(200)
-    .json([
-      { name: "Jason" },
-      { name: "Eleftheria" },
-      { name: "Gennadios" },
-      { name: "Lysimachos" },
-    ]);
-  next();
-}); */
+router.post("/", async (req, res, next) => {
+  const query = await "INSERT INTO `member` SET ? ";
+  const data = await req.body;
+  try {
+    await connection.query(query, [data], (error, result) => {
+      return error
+        ? res.status(500).json({ error })
+        : res.status(200).json(result);
+    });
+  } catch (error) {
+    throw await new Error(error);
+  }
+  await next();
+});
 
 module.exports = router;
