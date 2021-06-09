@@ -46,7 +46,6 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
 });
 // conditional test for Heroku PORT
 const port = process.env.PORT;
@@ -56,8 +55,8 @@ if (port == null || port == "") {
 
 app.listen(port, (err) => {
   if (err) {
-    console.log(err);
+    console.error(err);
   }
-  console.log(`app listen on port ${port}`);
+  console.info(`app listen on port ${port}`);
 });
 module.exports = app;
